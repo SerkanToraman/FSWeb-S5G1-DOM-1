@@ -121,5 +121,4 @@ const contactData = Object.values(siteContent.iletisim);
 const footerContent=document.querySelector('footer a');
 
 footerContent.textContent =siteContent.footer.copyright;
-
 footerContent.classList.add("bold");
