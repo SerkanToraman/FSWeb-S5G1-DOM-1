@@ -39,7 +39,87 @@ const siteContent = { // BU NESNEYİ DEĞİŞTİRMEYİN
   },
 };
 
-console.log('Proje açıldı!')
+//console.log('Proje açıldı!')
 
 
 /* Kodlar Buradan aşağıya */
+
+
+// let headerTag = document.getElementsByTagName("header")[0];
+// let navTag = headerTag.getElementsByTagName('nav')[0];
+// let aTag = navTag.getElementsByTagName('a');
+
+let aTag =document.querySelectorAll('header nav a');
+
+for (let i =0; i<aTag.length;i++){
+  aTag[i].className='italic';
+  aTag[i].textContent=Object.values(siteContent.nav)[i];
+}
+
+//Aytac cozum
+
+// const aLink = document.querySelectorAll("nav a");
+// aLink.forEach((item, index)=> {
+//   item.className ="italic";
+//   item.textContent = siteContent.nav["nav-item-" + (index+1)];
+// });
+
+const imgs = document.querySelectorAll("img");
+
+imgs.forEach((element,index) => {
+  // element.setAttribute("src",Object.values(siteContent.images)[index])
+  element.src=Object.values(siteContent.images)[index];
+  // element.src = siteContent.images[element.id];
+});
+
+const ctaLink = document.querySelector(".cta-text").children;
+
+
+// ctaLink.forEach((item,index)=>{
+//   item.textContent=Object.values(siteContent.cta)[index];
+// })
+
+for (let i =0; i<ctaLink.length;i++){
+  ctaLink[i].textContent=Object.values(siteContent.cta)[i];
+}
+
+// const ctaImg = document.getElementById('cta-img');
+// ctaImg.src = "http://localhost:9000/img/cta.png";
+
+
+const mainTextContent = document.querySelectorAll('.text-content');
+
+let index = 0;
+for (let i =0; i<mainTextContent.length;i++){
+  mainTextContent[i].children[0].textContent=Object.values(siteContent["ana-içerik"])[index];
+  index+=1
+  mainTextContent[i].children[1].textContent=Object.values(siteContent["ana-içerik"])[index];
+  index+=1
+}
+///// Deneme 1 basarisiz
+
+// const mainTextContent = document.querySelector('.contact');
+
+// mainTextContent.forEach((item,i,arr)=>{
+// arr[i].textContent = Object.values(siteContent.ana-içerik)[i];
+// })
+////// Deneme 2
+// let sectionContact = document.querySelectorAll('.contact')[0].children;
+
+// for(let i =0;sectionContact.length;i++){
+//   sectionContact[i].textContent=Object.values(siteContent.iletisim)[i]
+// }
+/////// Deneme 3
+
+const contactSection =document.querySelector('.contact');
+const contactData = Object.values(siteContent.iletisim);
+
+[...contactSection.children].map((elem,ind)=>{
+  contactSection.children[ind].textContent = contactData[ind];
+});
+
+const footerContent=document.querySelector('footer a');
+
+footerContent.textContent =siteContent.footer.copyright;
+
+footerContent.classList.add("bold");
